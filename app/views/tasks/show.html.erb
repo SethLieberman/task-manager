@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <p id="notice"><%= notice %></p>
+
+      <p>
+        <strong>Position:</strong>
+        <%= @task.position %>
+      </p>
+
+      <p>
+        <strong>Title:</strong>
+        <%= @task.title %>
+      </p>
+
+      <p>
+        <strong>Is done:</strong>
+        <%= @task.is_done %>
+      </p>
+
+      <%= link_to 'Edit', edit_task_path(@task), class: "btn btn-primary btn-lg" %> |
+      <%= link_to 'Back', tasks_path, class: "btn btn-outline-primary btn-lg" %>
+    </div>
+  </div>
+</div>
+
