@@ -5,7 +5,7 @@
     <div class="col-lg-12 mx-md-auto">
     <h1>Tasks</h1>
 
-      <%= link_to 'New Task', new_task_path, class: "btn btn-primary btn-lg mb-4" %>
+      <%= link_to 'New Task', new_task_path, class: "btn btn-primary btn-lg mb-4", data: { bs_toggle: 'modal', bs_target: "#newTaskModal", remote: true } %>
 
       <table class="table table-bordered">
         <thead>
@@ -17,28 +17,25 @@
           </tr>
         </thead>
 
-        <tbody>
+        <tbody id="taskTable">
           <% @tasks.each do |task| %>
-            <tr>
-              <td><%= task.position %></td>
-              <td><%= task.title %></td>
-              <td><%= task.is_done %></td>
-              <td>
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Action
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><%= link_to 'Show', task, class: "dropdown-item" %></li>
-                    <li><%= link_to 'Edit', edit_task_path(task), class: "dropdown-item" %></li>
-                    <li><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %></li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
+            <%= render 'task_row', task: task %>
           <% end %>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
+
+<!-- Create Modal -->
+<div class="modal fade" id="newTaskModal" tabindex="-1" aria-labelledby="newTaskModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newTaskModalLabel">Create New Task</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="newTaskForm"></div>
     </div>
   </div>
 </div>

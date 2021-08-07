@@ -1,0 +1,17 @@
+<tr id="taskRow_<%= task.id %>">
+  <td><%= task.position %></td>
+  <td><%= task.title %></td>
+  <td><%= task.is_done %></td>
+  <td>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Action
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><%= link_to 'Show', task, class: "dropdown-item" %></li>
+        <li><%= link_to 'Edit', edit_task_path(task), class: "dropdown-item", data: {bs_toggle: 'modal', bs_target: '#edittTaskForm', remote: true} %></li>
+        <li><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %></li>
+      </ul>
+    </div>
+  </td>
+</tr>
