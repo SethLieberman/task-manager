@@ -1,5 +1,5 @@
 <% if @task.errors.any? %>
-  alert("Invalid Deatils")
+  $("#errorArea").html("<%= escape_javascript render('error', task: @task) %>")
 <% else %>
   $("#taskRow_<%= @task.id %>").replaceWith("<%= escape_javascript render('task_row', task: @task)%>");
   $(".close-modal").click();

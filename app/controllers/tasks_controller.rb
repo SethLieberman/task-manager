@@ -6,17 +6,9 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
-  # GET /tasks/1 or /tasks/1.json
-  def show
-  end
-
   # GET /tasks/new
   def new
     @task = Task.new
-  end
-
-  # GET /tasks/1/edit
-  def edit
   end
 
   # POST /tasks or /tasks.json
@@ -57,6 +49,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: "Task was successfully destroyed." }
       format.json { head :no_content }
+      format.js
     end
   end
 
