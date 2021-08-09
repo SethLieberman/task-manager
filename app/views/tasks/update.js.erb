@@ -3,4 +3,11 @@
 <% else %>
   $("#taskRow_<%= @task.id %>").replaceWith("<%= escape_javascript render('task_row', task: @task)%>");
   $(".close-modal").click();
+
+  // this will reorder the list after an update is made
+  var taskList = document.querySelector("[data-task-list]");
+  var tasks = taskList.querySelectorAll("[data-task]");
+  var orderedTasks = Array.from(tasks).sort((element, otherElement) => parseInt(element.dataset.taskPosition) - parseInt(otherElement.dataset.taskPosition));
+  tasks.forEach(element => element.remove());
+  orderedTasks.forEach(element => taskList.insertAdjacentElement("beforeend", element))
 <% end %>

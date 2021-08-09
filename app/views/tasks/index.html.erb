@@ -16,7 +16,7 @@
           </tr>
         </thead>
 
-        <tbody id="taskTable">
+        <tbody id="taskTable" data-task-list="true">
           <% @tasks.each do |task| %>
             <%= render 'task_row', task: task %>
           <% end %>
